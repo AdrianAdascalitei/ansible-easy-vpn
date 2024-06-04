@@ -8,8 +8,8 @@
   ansible.builtin.lineinfile:
     path: /etc/sudoers
     state: present
-    regexp: "^%root"
-    line: "%root ALL=(ALL) NOPASSWD: ALL"
+    regexp: "^%{{ sudo_group }}"
+    line: "%{{ sudo_group }} ALL=(ALL) NOPASSWD: ALL"
     validate: "/usr/sbin/visudo -cf %s"
   when: enable_passwordless_sudo | default(False)
 
@@ -37,7 +37,7 @@
     path: "/home/{{ username }}/ansible-easy-vpn"
   register: system_playbook_copied
 
-- name: Add the direnv hook to {{ username }}`s bashrc
+- name: Add the direnv hook to {{ username }}'s bashrc
   ansible.builtin.blockinfile:
     path: /home/{{ username }}/.bashrc
     block: |

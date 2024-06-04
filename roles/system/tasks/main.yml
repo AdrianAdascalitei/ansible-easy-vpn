@@ -1,4 +1,12 @@
 ---
+- name: Include OS-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_os_family }}.yml"
+      paths:
+        - "vars"
+
 - name: Update the packages and configure auto-updates
   ansible.builtin.include_tasks: setup.yml
 

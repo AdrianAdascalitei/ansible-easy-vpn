@@ -8,9 +8,9 @@
     mode: "0644"
 
 - name: Check the location of iptables-restore
-  register: "iptables_restore"
+  register: iptables_restore
   changed_when: no
-  failed_when: "iptables_restore.stdout | length == 0"
+  failed_when: iptables_restore.stdout | length == 0
   ansible.builtin.command:
     cmd: "which iptables-restore"
 
@@ -21,9 +21,11 @@
     owner: root
     group: root
     mode: "0644"
+  vars:
+    iptables_restore: "{{ iptables_restore.stdout }}"
 
 - name: Enable and start the iptables service
-  ansible.builtin.service:
+  ansible.builtin.systemd:
     name: iptables
     state: started
     enabled: yes

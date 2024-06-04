@@ -13,7 +13,7 @@ assignees: notthebee
 **Describe the issue**
 A clear and concise description of what the issue is.
 
-**Logs (if applicable)** 
+**Logs (if applicable)**
 Paste any relevant error messages here:
 ```
 log
@@ -21,5 +21,5 @@ log
 
 **Environment:**
 - Client OS: [e.g. Windows, Linux]
-- VPS OS [e.g. Ubuntu 22.04, Debian 11, Ubuntu 20.04]
+- VPS OS [e.g. CentOS 9, Ubuntu 22.04, Debian 11, Ubuntu 20.04]
 - VPS Provider [e.g. Linode, Digital Ocean, Hetzner]

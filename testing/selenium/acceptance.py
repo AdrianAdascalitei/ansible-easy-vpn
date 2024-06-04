@@ -6,15 +6,13 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
-
 from os import mkdir
 import argparse
 import logging
 import pyotp
 import re
 
-
-service = Service(executable_path=r"/snap/bin/chromium.chromedriver")
+service = Service(executable_path="/usr/local/bin/chromedriver")  # Adjusted path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--username", type=str, metavar="username")
@@ -45,7 +43,6 @@ logger = logging.getLogger("ansible-easy-vpn")
 logging.basicConfig()
 logger.setLevel(logging.DEBUG)
 
-
 def register_2fa(driver, base_url, username, password, ssh_agent):
     logger.debug(f"Fetching wg.{base_url}")
     driver.get(f"https://wg.{base_url}")
@@ -74,7 +71,6 @@ def register_2fa(driver, base_url, username, password, ssh_agent):
     s.sendline("sudo show_2fa")
     s.prompt()
 
-    # Convert output to utf-8 due to pexpect weirdness
     notification = "\r\n".join(s.before.decode("utf-8").splitlines()[1:])
     print(notification)
 
@@ -104,7 +100,6 @@ def register_2fa(driver, base_url, username, password, ssh_agent):
     sleep(1)
     return
 
-
 def download_wg_config(driver, base_url, client):
     logger.debug(f"Opening wg.{base_url} in the browser")
     driver.get(f"https://wg.{base_url}")
@@ -126,7 +121,6 @@ def download_wg_config(driver, base_url, client):
     download_config.click()
 
     return
-
 
 register_2fa(driver, args.base_url, args.username, args.password, args.ssh_agent)
 download_wg_config(driver, args.base_url, args.username)

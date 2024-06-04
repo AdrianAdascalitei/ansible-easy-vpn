@@ -1,22 +1,24 @@
 ---
-- name: Update and upgrade apt packages
-  ansible.builtin.apt:
-    upgrade: yes
-    autoremove: yes
-    update_cache: yes
+- name: Ensure all packages are up-to-date
+  ansible.builtin.yum:
+    name: '*'
+    state: latest
 
-- name: Install unattended upgrades package
-  ansible.builtin.package:
-    name: unattended-upgrades
+- name: Install the dnf-automatic package
+  ansible.builtin.yum:
+    name: dnf-automatic
     state: present
 
-- name: Copy unattended-upgrades configuration files in place
+- name: Copy dnf-automatic configuration file in place
   ansible.builtin.template:
-    src: "{{ item }}.j2"
-    dest: "/etc/apt/apt.conf.d/{{ item }}"
+    src: dnf-automatic.conf.j2
+    dest: /etc/dnf/automatic.conf
     owner: root
     group: root
     mode: 0644
-  with_items:
-    - 10periodic
-    - 50unattended-upgrades
+
+- name: Enable and start dnf-automatic timer
+  ansible.builtin.systemd:
+    name: dnf-automatic.timer
+    enabled: yes
+    state: started

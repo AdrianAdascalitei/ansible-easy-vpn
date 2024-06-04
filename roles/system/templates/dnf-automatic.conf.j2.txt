@@ -1,0 +1,37 @@
+[commands]
+#  What kind of update to use:
+# default                                         == upgrade
+# security                                        == upgrade-minimal
+# minimal                                         == upgrade-minimal
+# updateinfo                                      == updateinfo
+upgrade_type = default
+
+# Whether updates should be applied when they are available.  Note that
+# download_updates must also be yes for any updates to be applied.
+apply_updates = yes
+
+# Whether updates should be downloaded when they are available.  Note
+# that apply_updates must also be yes for any updates to be applied.
+download_updates = yes
+
+# Maximum amout of time to randomly sleep, in minutes, before running.
+# The program will always sleep the entire time, with a message every
+# minute saying how much longer it has to sleep.
+random_sleep = 60
+
+[emitters]
+# Name of the emitter to use for sending messages.  Currently, only
+# stdio is supported.
+emit_via = stdio
+
+# Name of the output level to emit messages at.  Currently, only
+# notice is supported.
+output_level = notice
+
+[base]
+# Whether a message should be emitted when updates are available.
+emit_via = stdio
+
+[apply]
+# Whether messages should be emitted when updates are applied.
+emit_via = stdio
