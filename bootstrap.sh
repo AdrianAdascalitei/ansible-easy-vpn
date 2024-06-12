@@ -106,8 +106,7 @@ install_dependencies_centos() {
             python3-setuptools
             python3-pip
             firewalld
-            direnv
-            iptables
+            #direnv
         )
     else 
         REQUIRED_PACKAGES+=(
@@ -115,9 +114,8 @@ install_dependencies_centos() {
             python39-setuptools
             python39-pip
             firewalld
-            direnv
+            #direnv
             kmod-wireguard
-            iptables
             https://ftp.gwdg.de/pub/linux/elrepo/elrepo/el8/x86_64/RPMS/kmod-wireguard-1.0.20220627-4.el8_7.elrepo.x86_64.rpm
         )
     fi
@@ -138,7 +136,7 @@ if [ -d "$HOME/ansible-easy-vpn" ]; then
     git pull
     popd
 else
-    git clone https://github.com/notthebee/ansible-easy-vpn $HOME/ansible-easy-vpn
+    git clone https://github.com/AdrianAdascalitei/ansible-easy-vpn $HOME/ansible-easy-vpn
 fi
 
 # Set up a Python venv

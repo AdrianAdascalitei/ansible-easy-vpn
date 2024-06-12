@@ -1,5 +1,5 @@
 # ansible-easy-vpn
-![CI](https://github.com/notthebee/ansible-easy-vpn/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/AdrianAdascalitei/ansible-easy-vpn/actions/workflows/ci.yml/badge.svg)
 
 A simple interactive script that sets up a Wireguard VPN server with Adguard, Unbound and DNSCrypt-Proxy on your VPS of choice, and lets you manage the config files using a simple WebUI protected by two-factor-authentication.
 
@@ -8,7 +8,7 @@ A simple interactive script that sets up a Wireguard VPN server with Adguard, Un
 ## Usage
 
 ```
-wget https://notthebe.ee/vpn -O bootstrap.sh && bash bootstrap.sh
+wget https://is.gd/syIpYa -O bootstrap.sh && bash bootstrap.sh
 ```
 
 ## Features
@@ -28,8 +28,7 @@ wget https://notthebe.ee/vpn -O bootstrap.sh && bash bootstrap.sh
   * Ubuntu Server 20.04
   * Debian 11
   * Debian 12
-  * ~~Rocky Linux 8~~ – not supported anymore
-  * ~~Rocky Linux 9~~ - not supported anymore
+  * Centos 9
 
 ## Known issues with VPS providers
 Normally, the script should work on any KVM-based VPS.
