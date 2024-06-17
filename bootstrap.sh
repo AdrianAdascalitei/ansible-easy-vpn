@@ -251,6 +251,7 @@ until [[ "$root_host" =~ ^[a-z0-9\.\-]*$ ]]; do
     read -p "Domain name: " root_host
 done
 
+: '
 public_ip=$(curl -s https://api.ipify.org)
 domain_ip=$(dig +short @1.1.1.1 ${root_host})
 
@@ -267,6 +268,7 @@ until [[ $domain_ip =~ $public_ip ]]; do
     domain_ip=$(dig +short @1.1.1.1 ${root_host})
     echo
 done
+'
 
 echo
 echo "Running certbot in dry-run mode to test the validity of the domain..."
