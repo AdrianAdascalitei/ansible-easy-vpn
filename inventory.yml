@@ -4,14 +4,11 @@
 
 all:
   hosts:
-    centos9_host:
-      ansible_host: your_centos9_server_ip
-      ansible_user: your_user
-      ansible_become: true
-      ansible_python_interpreter: /usr/bin/python3
+    localhost:
+      ansible_connection: local
 
   vars:
-    username: notthebee
+    username: AdrianAdascalitei
 
     root_host: example.duckdns.org
 
@@ -21,13 +18,7 @@ all:
 
     enable_passwordless_sudo: yes
 
-    # Whether or not you want to generate a public key pair for SSH auth
-    # The playbook will not generate a new pair if $HOME/.ssh/authorized_keys exists and isn't empty
     enable_ssh_keygen: yes
-
-    # Uncomment this line if you already have a public SSH key and put your public key in it
-    # This overrides `enable_ssh_keygen`
-    # ssh_public_key: ""
 
     authelia_host: "auth.{{ root_host }}"
 
@@ -41,29 +32,16 @@ all:
 
     wireguard_port: "51820"
 
-    # Possible choices: cloudflare, quad9, google
-    #
-    # In case you've enabled Adguard, Unbound and DoH functionality,
-    # this will also set upstream DoH resolvers for dnscrypt
     dns_nameservers: cloudflare
 
-    # This will enable Adguard, Unbound and dnscrypt-proxy
-    # for secure DNS resolution with ad-blocking functionality
-    #
-    # The ad blocking is disabled by default, you need to navigate to
-    # adguard.your_domain.com to set it up.
     enable_adguard_unbound_doh: false
 
-    # Set the time at which the system should reboot after installing updates (24H format)
     autoupdate_reboot_time: 03:00
 
     docker_dir: "/opt/docker"
 
-    # You can set it to a different port in order to avoid automated scanner bots
     ssh_port: 22
 
-    # Optional e-mail for notifications (unattended upgrades, banned IPs, etc.)
-    # Leave everything in place if you don't want any notifications
     email_login: root@localhost
 
     email: "{{ email_login }}"
@@ -74,7 +52,6 @@ all:
 
     email_smtp_port: 465
 
-    # MSMTP
     msmtp_accounts:
       - account: mailbox
         host: "{{ email_smtp_host }}"
@@ -104,7 +81,6 @@ all:
         proto: tcp
         port: "{{ ssh_port }}"
 
-    # Fail2Ban only comes with the SSH jail by default
     enable_fail2ban: true
 
     pip_install_packages:
