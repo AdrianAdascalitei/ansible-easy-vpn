@@ -40,4 +40,6 @@
     volumes:
       - "{{ docker_dir }}/bunkerweb/data:/data"
       - "/lib/modules:/lib/modules"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     restart_policy: unless-stopped

@@ -60,6 +60,8 @@
     state: "started"
     volumes:
       - "{{ docker_dir }}/authelia:/config"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     restart_policy: unless-stopped
 
 - name: Add a 2FA alias shortcut command

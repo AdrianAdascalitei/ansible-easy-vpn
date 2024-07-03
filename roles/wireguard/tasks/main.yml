@@ -50,4 +50,6 @@
       - "{{ wireguard_port }}:51820/udp"
     volumes:
       - "{{ docker_dir }}/wg-easy:/etc/wireguard"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     restart_policy: unless-stopped
