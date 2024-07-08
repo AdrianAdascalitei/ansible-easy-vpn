@@ -1,57 +1,32 @@
-# Please don't edit this file directly! It will be reset when you update the git repository
-# Instead, put your variable customizations into custom.yml
 ---
-
 all:
   hosts:
     localhost:
       ansible_connection: local
 
   vars:
-    username: AdrianAdascalitei
-
-    root_host: example.duckdns.org
-
+    username: "AdrianAdascalitei"
+    root_host: "{{ domain }}"
     enable_username_creation: yes
-
     user_shell: /bin/bash
-
     enable_passwordless_sudo: yes
-
     enable_ssh_keygen: yes
-
     authelia_host: "auth.{{ root_host }}"
-
     wireguard_host: "wg.{{ root_host }}"
-
     wireguard_subnet: "10.8.0.x"
-
     wireguard_client_allowed_ips: "0.0.0.0/0, ::/0"
-
     adguard_host: "adguard.{{ root_host }}"
-
     wireguard_port: "51820"
-
     dns_nameservers: cloudflare
-
     enable_adguard_unbound_doh: false
-
     autoupdate_reboot_time: 03:00
-
     docker_dir: "/opt/docker"
-
     ssh_port: 22
-
     email_login: root@localhost
-
     email: "{{ email_login }}"
-
     email_recipient: "{{ email_login }}"
-
     email_smtp_host: smtp.localhost.com
-
     email_smtp_port: 465
-
     msmtp_accounts:
       - account: mailbox
         host: "{{ email_smtp_host }}"
@@ -60,13 +35,9 @@ all:
         from: "{{ email }}"
         user: "{{ email_login }}"
         password: "{{ email_password }}"
-
     msmtp_default_account: "mailbox"
-
     msmtp_alias_default: "{{ email }}"
-
     ssh_allow_cidr: 0.0.0.0/0
-
     iptables_allow_rules:
       - desc: "Allow Wireguard"
         proto: udp
@@ -80,11 +51,8 @@ all:
       - desc: "Allow SSH"
         proto: tcp
         port: "{{ ssh_port }}"
-
     enable_fail2ban: true
-
     pip_install_packages:
       - name: docker
-
     docker_users:
       - "{{ username }}"

@@ -56,9 +56,9 @@
     mode: 0644
   with_items:
     - regexp: "^#?PasswordAuthentication"
-      line: "PasswordAuthentication no"
+      line: "PasswordAuthentication yes"
     - regexp: "^#?PermitRootLogin"
-      line: "PermitRootLogin no"
+      line: "PermitRootLogin yes"
     - regexp: "^#?Port"
       line: "Port {{ ssh_port }}"
     - regexp: "^#?PermitEmptyPasswords"
