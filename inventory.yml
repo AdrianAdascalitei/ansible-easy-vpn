@@ -11,8 +11,8 @@ all:
     user_shell: /bin/bash
     enable_passwordless_sudo: yes
     enable_ssh_keygen: yes
-    authelia_host: "auth.{{ root_host }}"
-    wireguard_host: "wg.{{ root_host }}"
+    authelia_host: "auth-{{ root_host }}"
+    wireguard_host: "wg-{{ root_host }}"
     wireguard_subnet: "10.8.0.x"
     wireguard_client_allowed_ips: "0.0.0.0/0, ::/0"
     adguard_host: "adguard.{{ root_host }}"
