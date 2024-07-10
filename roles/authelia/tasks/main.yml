@@ -35,7 +35,9 @@
     image: "redis:alpine"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      start_period: 5s
+      interval: 10s
+      timeout: 10s
+      retries: 6
     networks:
       - name: wg_network
         ipv4_address: 10.8.2.3
@@ -52,7 +54,9 @@
     image: "authelia/authelia:{{ authelia_version }}"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9091"]
-      start_period: 10s
+      interval: 10s
+      timeout: 10s
+      retries: 6
     networks:
       - name: wg_network
         ipv4_address: 10.8.2.4

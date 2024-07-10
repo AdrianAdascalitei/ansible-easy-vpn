@@ -27,7 +27,9 @@
     image: "bunkerity/bunkerweb:{{ bunkerweb_version }}"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
-      start_period: 10s
+      interval: 10s
+      timeout: 10s
+      retries: 6
     networks:
       - name: wg_network
         ipv4_address: 10.8.2.5
