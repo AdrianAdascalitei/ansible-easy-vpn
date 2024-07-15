@@ -68,6 +68,16 @@
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: unless-stopped
 
+- name: Update the database encryption key
+  command: docker exec -it authelia authelia storage encryption change-key --new-encryption-key {{ storage_encryption_key }}
+  when: authelia_result.changed
+
+- name: Restart Authelia container
+  community.general.docker_container:
+    name: "authelia"
+    state: "restarted"
+  notify: Restart authelia
+
 - name: Add a 2FA alias shortcut command
   ansible.builtin.blockinfile:
     path: "/usr/bin/show_2fa"
