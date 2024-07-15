@@ -5,7 +5,7 @@
 read -N 999999 -t 0.001
 
 # Quit on error
-set -e
+# set -e
 
 # Detect OS
 if grep -qs "ubuntu" /etc/os-release; then
