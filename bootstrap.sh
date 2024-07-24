@@ -283,7 +283,7 @@ echo "root_host: \"${root_host}\"" >> $HOME/ansible-easy-vpn/custom.yml
 
 echo "What's your preferred DNS?"
 echo
-echo "1. Cloudflare [1.1.1.1] (default)"
+echo "1. ISM (default)"
 echo "2. Quad9 [9.9.9.9]"
 echo "3. Google [8.8.8.8]"
 echo
