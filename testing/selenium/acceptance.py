@@ -44,8 +44,8 @@ logging.basicConfig()
 logger.setLevel(logging.DEBUG)
 
 def register_2fa(driver, base_url, username, password, ssh_agent):
-    logger.debug(f"Fetching wg.{base_url}")
-    driver.get(f"https://wg.{base_url}")
+    logger.debug(f"Fetching w.{base_url}")
+    driver.get(f"https://w.{base_url}")
     sleep(0.5)
     logger.debug(f"Filling out the username field with {username}")
     username_field = driver.find_element("id", "username-textfield")
@@ -75,7 +75,7 @@ def register_2fa(driver, base_url, username, password, ssh_agent):
     print(notification)
 
     token = re.search("token=(.*)", notification).group(1)
-    driver.get(f"https://auth.{base_url}/one-time-password/register?token={token}")
+    driver.get(f"https://auth-w.{base_url}/one-time-password/register?token={token}")
     sleep(2)
     secret_field = driver.find_element("id", "secret-url")
     secret_field = secret_field.get_attribute("value")
@@ -101,8 +101,8 @@ def register_2fa(driver, base_url, username, password, ssh_agent):
     return
 
 def download_wg_config(driver, base_url, client):
-    logger.debug(f"Opening wg.{base_url} in the browser")
-    driver.get(f"https://wg.{base_url}")
+    logger.debug(f"Opening w.{base_url} in the browser")
+    driver.get(f"https://w.{base_url}")
     sleep(2)
     logger.debug("Clicking on the 'New Client' button")
     new_client_button = driver.find_element("xpath", "//*[contains(text(), 'New Client')]")

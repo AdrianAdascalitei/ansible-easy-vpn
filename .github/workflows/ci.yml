@@ -188,7 +188,7 @@ jobs:
       - uses: infraway/create-dns-record@v2.0
         with:
           type: "CNAME"
-          name: "auth.${{ env.EASYVPN_USERNAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}"
+          name: "auth-w.${{ env.EASYVPN_USERNAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}"
           content: "${{ env.EASYVPN_USERNAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}"
           proxied: false
           token: ${{ secrets.CLOUDFLARE_TOKEN }}
@@ -197,7 +197,7 @@ jobs:
       - uses: infraway/create-dns-record@v2.0
         with:
           type: "CNAME"
-          name: "wg.${{ env.EASYVPN_USERNAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}"
+          name: "w.${{ env.EASYVPN_USERNAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}"
           content: "${{ env.EASYVPN_USERNAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}"
           proxied: false
           token: ${{ secrets.CLOUDFLARE_TOKEN }}

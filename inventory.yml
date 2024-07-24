@@ -11,10 +11,10 @@ all:
     user_shell: /bin/bash
     enable_passwordless_sudo: yes
     enable_ssh_keygen: yes
-    authelia_host: "auth-{{ root_host }}"
-    wireguard_host: "wg-{{ root_host }}"
+    authelia_host: "auth-w.{{ root_host }}"
+    wireguard_host: "w.{{ root_host }}"
     wireguard_subnet: "10.8.0.x"
-    wireguard_client_allowed_ips: "0.0.0.0/0, ::/0"
+    wireguard_client_allowed_ips: "10.8.1.0/24, 10.10.0.0/16, 192.168.0.0/16, 104.42.51.215/32, 23.99.13.19/32, 13.64.70.71/32"
     adguard_host: "adguard.{{ root_host }}"
     wireguard_port: "51820"
     dns_nameservers: cloudflare
